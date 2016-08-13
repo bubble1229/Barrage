@@ -2,7 +2,7 @@ FROM node:4.1.1
 MAINTAINER zsx <zsx@zsxsoft.com> 
 
 ## If comment the part of mariadb, then you should uncomment the following line.
-## RUN apt-get update
+RUN apt-get update
 
 ## Install memcached
 RUN apt-get install -y memcached
