@@ -1,7 +1,7 @@
 module.exports = {
 	"rooms": {
 		"default": {
-			"hostname": ["test.zsxsoft.com", "danmu.zsxsoft.com"], 
+			"hostname": ["http://mnichangxin-barrage-server.daoapp.io"], 
 			"display": "默认",
 			"table": "room_default", // 数据表
 			"connectpassword": "123456", // 客户端连接密码

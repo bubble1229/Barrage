@@ -35,10 +35,10 @@ danmu-server
 #### Nodejs
  必须安装[Nodejs](https://nodejs.org/)。强烈推荐使用最新版本Nodejs。
 ##### 在Node 5.1+ / 6.x使用
- 无需任何附加操作，直接使用``npm start``就可以启动。
+无需任何附加操作，直接使用``npm start``就可以启动。
  
 ##### 在Node 4.x使用
- 你需要先用babel编译后才能使用。
+你需要先用babel编译后才能使用。
  
  首先，你需要安装babel-cli: ``npm install babel-cli -g``，接着进入本项目根目录下进行编译：
  ```bash
