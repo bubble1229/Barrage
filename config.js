@@ -1,7 +1,9 @@
+"use strict";
+
 module.exports = {
 	"rooms": {
 		"default": {
-			"hostname": ["http://mnichangxin-barrage-server.daoapp.io"], 
+			"hostname": ["http://mnichangxin-barrage-server.daoapp.io"],
 			"display": "默认",
 			"table": "room_default", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
@@ -13,11 +15,10 @@ module.exports = {
 				"replacement": /父|母|夫|妻|女儿|儿子|孙子|孙女|女婿|娘|爹|爸|妈|爷|奶|哥|弟|兄|姐|妹|鸡|鸭|狗|猪|gay|mother|mom|father|dad|sister|brother|son|daughter|dog|pig/ig,
 				// 替换关键词
 				"ignore": /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|_|\||\+|\-|\=|\{|\}|\[|\]|\;|\'|\:|\"|\<|\>|\?|\/|\.|\,|\！|\＃|\￥|\…|\（|\）|\—|\、|\【|\】|\｛|\｝|\；|\：|\‘|\’|\“|\”|\《|\》|\＼|\，|\。|\、|\？|\ |\　/ig
-					// 忽略词
+				// 忽略词
 			},
-			"blockusers": [ // 封禁用户
-				"test"
-			],
+			"blockusers": [// 封禁用户
+			"test"],
 			"maxlength": 100, // 队列最大长度
 			"textlength": 1000, // 弹幕最大长度
 			"image": {
@@ -31,11 +32,10 @@ module.exports = {
 				"textStyle": false, // CSS开关
 				"height": false, // 高度开关
 				"lifeTime": false, // 显示时间开关
-				"sourceCode": false, // 自定义高级JavaScript弹幕开关
-			}
+				"sourceCode": false }
 		},
 		"unlimited": {
-			"hostname": ["http://mnichangxin-barrage-server.daoapp.io", "localhost", "127.0.0.1"],
+			"hostname": ["http://mnichangxin-barrage-server.daoapp.io", "127.0.0.1", "localhost"],
 			"display": "无限房间",
 			"table": "room_unlimited", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
@@ -47,9 +47,9 @@ module.exports = {
 				"replacement": /^$/,
 				// 替换关键词
 				"ignore": /^$/
-					// 忽略词
+				// 忽略词
 			},
-			"blockusers": [ // 封禁用户
+			"blockusers": [// 封禁用户
 			],
 			"maxlength": 1000, // 队列最大长度
 			"textlength": 10000, // 弹幕最大长度
@@ -64,8 +64,7 @@ module.exports = {
 				"textStyle": true, // CSS开关
 				"height": true, // 高度开关
 				"lifeTime": true, // 显示时间开关
-				"sourceCode": true, // 自定义高级JavaScript弹幕开关
-			}
+				"sourceCode": true }
 		}
 	},
 	"database": {
@@ -77,17 +76,16 @@ module.exports = {
 		"db": "danmu", // 数据库（mysql / mongo）
 		"retry": 10, // 24小时允许断线重连最大次数，超过则自动退出程序。24小时以第一次断线时间计。（mysql）
 		"timeout": 1000, // 数据库重连延时及Ping（mysql）
-		"savedir": "./", // 指定文件保存位置（csv）
-	},
+		"savedir": "./" },
 	"websocket": {
 		"interval": 10, // 弹幕发送间隔
 		"singlesize": 5 // 每次弹幕发送数量
 	},
 	"http": {
 		"port": 3000, // 服务器端口
-		"headers": { // HTTP头
-			//"Access-Control-Allow-Origin": "*",
-			//"Access-Control-Allow-Methods": "POST"
+		"headers": {// HTTP头
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "POST"
 		},
 		"sessionKey": "hey"
 	},
@@ -100,13 +98,12 @@ module.exports = {
 	},
 	"ext": {
 		/*"weibo": {
-			"clientID": '', // App ID
-			"clientSecret": '', // App Secret
-			"callbackURL": 'http://test.zsxsoft.com:3000/auth/sina/callback', // 这里填写的是 网站地址/auth/sina/callback
-			"requireState": true // 是否打开CSRF防御
-		},*/
+  	"clientID": '', // App ID
+  	"clientSecret": '', // App Secret
+  	"callbackURL": 'http://test.zsxsoft.com:3000/auth/sina/callback', // 这里填写的是 网站地址/auth/sina/callback
+  	"requireState": true // 是否打开CSRF防御
+  },*/
 		"autoban": {
-			"block": 3, // 被拦截超过一定数字自动封号
-		}
+			"block": 3 }
 	}
 };
