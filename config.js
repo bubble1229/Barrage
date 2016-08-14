@@ -3,7 +3,7 @@
 module.exports = {
 	"rooms": {
 		"default": {
-			"hostname": ["http://mnichangxin-barrage-server.daoapp.io"],
+			"hostname": ["http://barrage.daoapp.io"],
 			"display": "默认",
 			"table": "room_default", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
@@ -35,7 +35,7 @@ module.exports = {
 				"sourceCode": false }
 		},
 		"unlimited": {
-			"hostname": ["http://mnichangxin-barrage-server.daoapp.io", "127.0.0.1", "localhost"],
+			"hostname": ["http://barrage.daoapp.io", "barrage.daoapp.io", "127.0.0.1", "localhost"],
 			"display": "无限房间",
 			"table": "room_unlimited", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
