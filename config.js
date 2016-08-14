@@ -35,7 +35,7 @@ module.exports = {
 			}
 		},
 		"unlimited": {
-			"hostname": ["127.0.0.1", "localhost"],
+			"hostname": ["http://mnichangxin-barrage-server.daoapp.io", "localhost", "127.0.0.1"],
 			"display": "无限房间",
 			"table": "room_unlimited", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
