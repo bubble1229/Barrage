@@ -12,11 +12,46 @@
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <style type="text/css">
+    * {
+    	margin: 0;
+    	padding: 0;
+    }
     body {
         padding-top: 50px;
+        font-family: 'Microsoft YaHei';
     }
-    
+
+    .entry-name {
+    	margin: 100px auto;
+    	width: 375px;
+    	text-align: center;
+    }
+
+    .entry-name p {
+    	display: inline-block;
+    }
+
+    .entry-name input {
+        height: 30px;
+        padding-left: 10px;
+        outline: 0;
+        border: 1px solid #73a433;
+    }
+
+    .btn {
+    	margin-top: 10px;
+    	padding: 3px;
+    	width: 80px;
+    	height: 30px;
+    	line-height: 22px;
+    	border-radius: 3px;
+    	background: #73a433;
+    	color: #fff;
+    	text-align: center;
+    }
+
     .starter-template {
+    	display: none;
         padding: 40px 15px;
         text-align: center;
     }
@@ -40,7 +75,12 @@
         </div>
     </nav>
     <div class="container">
-        <div class="starter-template">
+    	<div class="entry-name">
+    		<p>昵称：<input type="text" placeholder="请务必输入微信昵称" id="nickname"></p>
+    		<p>姓名：<input type="text" placeholder="请输入真实姓名" id="name"></p><br>
+    		<p class="btn" id="btn">确认进入</p>
+    	</div>
+        <div class="starter-template" id="starter-template">
             <form id="form-ret">
                 <div class="row">
                     <p class="text-success">发送你的弹幕吧！</p>
@@ -147,29 +187,41 @@
         var room = "<%=room%>";
         var danmuHash = null;
 
-        calculateHash();
-        initializeRoomSelector();
-        bindSendButton();
+        entryName();
+        // calculateHash();
+        // initializeRoomSelector();
+        // bindSendButton();
 
-        function calculateHash() {
-            function b2h(s) {
-                var i, l, n, o = '';
-                s += '';
-                for (i = 0, l = s.length; i < l; i++) {
-                    n = s.charCodeAt(i).toString(16);
-                    o += n.length < 2 ? '0' + n : n;
-                }
-                return o;
-            }
-            
-            // In some modes, localStorage cannot be used.
-            try {
-                danmuHash = localStorage.getItem("danmuHash");
-            } catch (e) {
-                danmuHash = "CANNOT_GET_HASH";
-                // eat it
-            }
+        function entryName () {
+        	$('#btn').
+        		on('click', function() {
+	        		var kv = $('#nickname').val(),
+	        			nv = $('#name').val();
+	        		if (kv != '' && nv != '') {
 
+	        			$('#starter-template').show();
+	        			$(this).parent().hide();
+
+	        			calculateHash(kv + '---' + nv);
+	        			initializeRoomSelector();
+        				bindSendButton();
+	        		} else {
+	        			alert('输入有误！');
+	        		}
+        		});
+        }
+
+        function calculateHash(b64) {
+            // function b2h(s) {
+            //     var i, l, n, o = '';
+            //     s += '';
+            //     for (i = 0, l = s.length; i < l; i++) {
+            //         n = s.charCodeAt(i).toString(16);
+            //         o += n.length < 2 ? '0' + n : n;
+            //     }
+            //     return o;
+            // }
+        
             if (danmuHash === null) {
                 var canvas = document.createElement('canvas');
                 var ctx = canvas.getContext('2d');
@@ -178,13 +230,22 @@
                 ctx.fillStyle = "#0281cd";
                 ctx.fillText("zsx's Danmu Server\n\n弹幕验证帆布指纹", 5, 5);
                 ctx.fillText("http://www.zsxsoft.com/", 5, 30);
-                var b64 = b2h(atob(canvas.toDataURL().replace("data:image/png;base64,", "")).slice(-32, -24));
+                // var b64 = b2h(atob(canvas.toDataURL().replace("data:image/png;base64,", "")).slice(-32, -24));
                 try {
                     localStorage.danmuHash = b64;
                 } catch (e) {
                     // Still do nothing
                 }
             }
+
+            // In some modes, localStorage cannot be used.
+            try {
+                danmuHash = localStorage.getItem("danmuHash");
+            } catch (e) {
+                danmuHash = "CANNOT_GET_HASH";
+                // eat it
+            }
+
         }
 
         function initializeRoomSelector() {
@@ -213,9 +274,11 @@
             $("#btn-send").click(function() {
                 var ret = {};
                 var object = $("#form-ret").serializeArray();
+
                 for (var i = 0; i < object.length; i++) {
                     ret[object[i].name] = object[i].value;
                 }
+
                 ret.hash = danmuHash;
                 $.post("/post", ret).done(function(data) {
                     alert(data);

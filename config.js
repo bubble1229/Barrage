@@ -3,7 +3,7 @@
 module.exports = {
 	"rooms": {
 		"default": {
-			"hostname": ["http://barrage.daoapp.io"],
+			"hostname": ["http://barrage.daoapp.io", "barrage.daoapp.io", "127.0.0.1", "localhost"],
 			"display": "默认",
 			"table": "room_default", // 数据表
 			"connectpassword": "123456", // 客户端连接密码
@@ -27,7 +27,7 @@ module.exports = {
 			},
 			"permissions": { // 普通用户允许的弹幕权限
 				"send": true, // 弹幕开关；关闭后无论普通用户还是高级权限都完全禁止弹幕。
-				"style": false, // 弹幕样式开关
+				"style": true, // 弹幕样式开关
 				"color": false, // 颜色开关
 				"textStyle": false, // CSS开关
 				"height": false, // 高度开关
@@ -61,9 +61,9 @@ module.exports = {
 				"send": true, // 弹幕开关；关闭后无论普通用户还是高级权限都完全禁止弹幕。
 				"style": true, // 弹幕样式开关
 				"color": true, // 颜色开关
-				"textStyle": true, // CSS开关
-				"height": true, // 高度开关
-				"lifeTime": true, // 显示时间开关
+				"textStyle": false, // CSS开关
+				"height": false, // 高度开关
+				"lifeTime": false, // 显示时间开关
 				"sourceCode": true }
 		}
 	},
