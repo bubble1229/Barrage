@@ -23,7 +23,6 @@
 
     .entry-name {
     	margin: 100px auto;
-    	width: 375px;
     	text-align: center;
     }
 
@@ -76,8 +75,8 @@
     </nav>
     <div class="container">
     	<div class="entry-name">
-    		<p>昵称：<input type="text" placeholder="请务必输入微信昵称" id="nickname"></p>
-    		<p>姓名：<input type="text" placeholder="请输入真实姓名" id="name"></p><br>
+    		<p>昵称：<input type="text" placeholder="请务必输入微信号" id="nickname"></p><br/>
+    		<p>姓名：<input type="text" placeholder="请输入真实姓名" id="name"></p><br/>
     		<p class="btn" id="btn">确认进入</p>
     	</div>
         <div class="starter-template" id="starter-template">
@@ -111,7 +110,14 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">颜色(16进制)</label>
                         <div class="col-sm-8">
-                            <input type="color" name="color" class="form-control" name="txt-color" value="#ffffff" />
+                            <input type="color" name="color" class="form-control" list="color-list" name="txt-color" value="#ffffff" />
+                            <datalist id="color-list">
+                                <option>#030303</option>
+                                <option>#d7295e</option>
+                                <option>#882392</option>
+                                <option>#56c437</option>
+                                <option>#6599d1</option>
+                            </datalist>
                         </div>
                     </div>
                     <p>&nbsp;</p>
@@ -174,7 +180,6 @@
                     <p>
                         <br/>
                     </p>
-                    <p>Powered by zsx</p>
                     <p>若弹幕无法发送，则请刷新。</p>
                     <p>在弹幕上表白、使用不文明语言有被封号的可能。</p>
                 </div>
