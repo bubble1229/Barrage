@@ -15,7 +15,7 @@ module.exports = {
 				"replacement": /父|母|夫|妻|女儿|儿子|孙子|孙女|女婿|娘|爹|爸|妈|爷|奶|哥|弟|兄|姐|妹|鸡|鸭|狗|猪|gay|mother|mom|father|dad|sister|brother|son|daughter|dog|pig/ig,
 				// 替换关键词
 				"ignore": /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|_|\||\+|\-|\=|\{|\}|\[|\]|\;|\'|\:|\"|\<|\>|\?|\/|\.|\,|\！|\＃|\￥|\…|\（|\）|\—|\、|\【|\】|\｛|\｝|\；|\：|\‘|\’|\“|\”|\《|\》|\＼|\，|\。|\、|\？|\ |\　/ig
-				// 忽略词
+				// 忽略词	
 			},
 			"blockusers": [// 封禁用户
 			"test"],
@@ -32,7 +32,8 @@ module.exports = {
 				"textStyle": false, // CSS开关
 				"height": false, // 高度开关
 				"lifeTime": false, // 显示时间开关
-				"sourceCode": false }
+				"sourceCode": false 
+			}
 		},
 		"unlimited": {
 			"hostname": ["http://barrage.daoapp.io", "barrage.daoapp.io", "127.0.0.1", "localhost"],
@@ -98,12 +99,13 @@ module.exports = {
 	},
 	"ext": {
 		/*"weibo": {
-  	"clientID": '', // App ID
-  	"clientSecret": '', // App Secret
-  	"callbackURL": 'http://test.zsxsoft.com:3000/auth/sina/callback', // 这里填写的是 网站地址/auth/sina/callback
-  	"requireState": true // 是否打开CSRF防御
-  },*/
+	  	"clientID": '', // App ID
+	  	"clientSecret": '', // App Secret
+	  	"callbackURL": 'http://test.zsxsoft.com:3000/auth/sina/callback', // 这里填写的是 网站地址/auth/sina/callback
+	  	"requireState": true // 是否打开CSRF防御
+	  },*/
 		"autoban": {
-			"block": 3 }
+			"block": 3 
+		}
 	}
 };

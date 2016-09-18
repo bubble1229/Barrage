@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>验证身份</title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: 'Microsoft YaHei';
+				font-size: 16px;
+			}
+			.container {
+				margin: 200px auto;
+				text-align: center;
+			}
+			p {
+				display: inline-block;
+			}
+			p.pwd {
+				margin-top: 20px;
+			}
+			p.btn {
+				margin-top: 20px;
+				width: 50px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 3px;
+				text-align: center;
+				background: #75b825;
+				color: #fff;
+				cursor: pointer;
+			}
+			input {
+				height: 30px;
+				outline: 0;
+				padding-left: 10px;
+				border: 1px solid #75b825;
+				border-radius: 2px;
+				color: #75b825;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<p><label>账号：</label><input type="text" placeholder="管理员账号" id="name"></p><br/>
+			<p class="pwd"><label>密码：</label><input type="password" placeholder="管理员密码" id="pwd"></p><br/>
+			<p class="btn" id="btn">确认</p>
+		</div>
+		<script type="text/javascript">
+			$('#btn')
+				.on('click', function() {
+	        		$.post('/manage', {
+	        			name: $('#name').val(),
+	        			pwd: $('#pwd').val()	
+	        		}, function(data) {
+	        			if (JSON.parse(data).flag == 'OK') {
+	        				location.href = 'manage?random=' + JSON.parse(data).random;
+	        			} else {
+	        				alert('账号或密码有误！');
+	        			}
+	        		});
+				});
+		</script>
+	</body>
+</html>
