@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>发送弹幕</title>
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css" rel="stylesheet"> -->
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
     <style type="text/css">
     * {
     	margin: 0;
@@ -20,10 +20,38 @@
         padding-top: 50px;
         font-family: 'Microsoft YaHei';
     }
-
-    .entry-name {
-    	margin: 100px auto;
+    .navbar {
+    	position: absolute;
+    }
+    .logo {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 51px;
+    	height: 51px;
+    	background: url(http://7xr2ek.com1.z0.glb.clouddn.com/barrage/image/logo.jpg);
+    	z-index: 1000;
+    }
+    .qr-code {
+    	margin: 0 auto;
+    	width: 200px;
+    	height: 274px;
+    	background: url(http://7xr2ek.com1.z0.glb.clouddn.com/barrage/image/qr-code.png);
+    }
+    .support, .add-group {
     	text-align: center;
+    	color: #7a7a7a;
+    }
+    .support {
+    	margin-top: 20px;
+    }
+    .support .turingca {
+    	font-weight: bold;
+    }
+    .entry-name {
+    	margin: 150px auto 100px auto;
+    	text-align: center;
+    	font-size: 18px;
     }
 
     .entry-name p {
@@ -31,22 +59,24 @@
     }
 
     .entry-name input {
-        height: 30px;
+        height: 35px;
         padding-left: 10px;
         outline: 0;
         border: 1px solid #73a433;
     }
 
     .btn {
-    	margin-top: 10px;
+    	box-sizing: content-box;
+    	margin-top: 20px;
     	padding: 3px;
     	width: 80px;
     	height: 30px;
-    	line-height: 22px;
+    	line-height: 30px;
     	border-radius: 3px;
     	background: #73a433;
     	color: #fff;
     	text-align: center;
+    	font-size: 18px;
     }
 
     .starter-template {
@@ -58,7 +88,6 @@
     .danmu-advanced {
         display: <%=advanced ? "block": "none"%>;
     }
-
     </style>
 </head>
 
@@ -66,17 +95,18 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">弹幕</a>
+                <a class="navbar-brand" href="#" style="margin-left: 51px;">图灵弹幕系统</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right"></ul>
             </div>
         </div>
+        <div class="logo"></div>
     </nav>
     <div class="container">
     	<div class="entry-name">
-    		<p>昵称：<input type="text" placeholder="请务必输入微信号" id="nickname"></p><br/>
-    		<p>姓名：<input type="text" placeholder="请输入真实姓名" id="name"></p><br/>
+    		<!-- <p>昵称：<input type="text" placeholder="请务必输入微信号" id="nickname"></p><br/> -->
+    		<p>姓名：<input type="text" placeholder="请输入姓名^O^" id="name"></p><br>
     		<p class="btn" id="btn">确认进入</p>
     	</div>
         <div class="starter-template" id="starter-template">
@@ -110,14 +140,14 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">颜色(16进制)</label>
                         <div class="col-sm-8">
-                            <input type="color" name="color" class="form-control" list="color-list" name="txt-color" value="#ffffff" />
-                            <datalist id="color-list">
+                            <input type="color" class="form-control"/>
+                            <!-- <datalist id="color-list">
                                 <option>#030303</option>
                                 <option>#d7295e</option>
                                 <option>#882392</option>
                                 <option>#56c437</option>
                                 <option>#6599d1</option>
-                            </datalist>
+                            </datalist> -->
                         </div>
                     </div>
                     <p>&nbsp;</p>
@@ -176,15 +206,22 @@
                     <textarea class="form-control" name="sourceCode" row="4" id="txt-custom" placeholder="Enter JavaScript Here.."></textarea>
                 </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <p>
                         <br/>
                     </p>
                     <p>若弹幕无法发送，则请刷新。</p>
                     <p>在弹幕上表白、使用不文明语言有被封号的可能。</p>
-                </div>
+                </div> -->
             </form>
         </div>
+        <div class="row">
+    		<div class="footer">
+    			<div class="qr-code"></div>
+    			<p class="support">由<a href="http://www.turingca.com/" class="turingca">图灵电脑协会</a>提供技术支持</p>
+    			<p class="add-group">社团纳新进行中 欢迎加群进一步了解</p>
+    		</div>
+    	</div>
     </div>
     <script>
     $(function() {
@@ -200,14 +237,13 @@
         function entryName () {
         	$('#btn').
         		on('click', function() {
-	        		var kv = $('#nickname').val(),
-	        			nv = $('#name').val();
-	        		if (kv != '' && nv != '') {
+	        		var nv = $('#name').val();
+	        		if (nv != '') {
 
 	        			$('#starter-template').show();
 	        			$(this).parent().hide();
 
-	        			calculateHash(kv + '---' + nv);
+	        			calculateHash(nv);
 	        			initializeRoomSelector();
         				bindSendButton();
 	        		} else {
