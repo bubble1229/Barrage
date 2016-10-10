@@ -262,7 +262,9 @@
         			$('.footer').hide();
         		})
         		.on('blur', function() {
-        			$('.footer').show();
+        			setTimeout(function() {
+        				$('.footer').show();
+        			}, 500);	
         		});
         }
 
