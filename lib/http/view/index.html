@@ -16,7 +16,11 @@
     	margin: 0;
     	padding: 0;
     }
+    html {
+    	height: 100%;
+    }
     body {
+    	min-height: 100%;
         padding-top: 50px;
         font-family: 'Microsoft YaHei';
     }
@@ -33,11 +37,22 @@
     	background: url(http://7xr2ek.com1.z0.glb.clouddn.com/barrage/image/logo.jpg);
     	z-index: 1000;
     }
+    .footer {
+    	position: absolute;
+    	width: 100%;
+    	left: 50%;
+    	bottom: 0;
+    	-webkit-transform: translate(-50%, 0);
+    	        transform: translate(-50%, 0);
+    }
+    .footer-show {
+    	margin-top: 15px;
+    }
     .qr-code {
     	margin: 0 auto;
     	width: 200px;
-    	height: 274px;
-    	background: url(http://7xr2ek.com1.z0.glb.clouddn.com/barrage/image/qr-code.png);
+    	height: 52px;
+    	background: url(http://7xr2ek.com1.z0.glb.clouddn.com/barrage/image/qr-code.png) no-repeat;
     }
     .support, .add-group {
     	text-align: center;
@@ -50,7 +65,7 @@
     	font-weight: bold;
     }
     .entry-name {
-    	margin: 150px auto 100px auto;
+    	margin: 100px auto 0 auto;
     	text-align: center;
     }
 
@@ -81,6 +96,7 @@
     .starter-template {
     	display: none;
         padding: 40px 15px;
+        padding-bottom: 0;
         text-align: center;
     }
     
@@ -117,7 +133,7 @@
                     <textarea class="form-control" name="text" row="4" id="txt-barrage"></textarea>
                 </div>
                 <p>&nbsp;</p>
-                <div class="row danmu-advanced danmu-style">
+                <!-- <div class="row danmu-advanced danmu-style">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">特效</label>
                         <div class="col-sm-8">
@@ -134,7 +150,7 @@
                         </div>
                     </div>
                     <p>&nbsp;</p>
-                </div>
+                </div> -->
                 <div class="row danmu-advanced danmu-color">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">颜色(16进制)</label>
@@ -144,7 +160,7 @@
                     </div>
                     <p>&nbsp;</p>
                 </div>
-                <div class="row danmu-advanced danmu-textStyle">
+                <!-- <div class="row danmu-advanced danmu-textStyle">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">文字CSS</label>
                         <div class="col-sm-8">
@@ -179,7 +195,7 @@
                         </div>
                     </div>
                     <p>&nbsp;</p>
-                </div>
+                </div> -->
                 <div class="row">
                     <button class="form-control btn-success" id="btn-send">喷射</button>
                 </div>
@@ -207,12 +223,10 @@
                 </div> -->
             </form>
         </div>
-        <div class="row">
-    		<div class="footer">
-    			<div class="qr-code"></div>
-    			<p class="support">由<a href="http://www.turingca.com/" class="turingca">图灵电脑协会</a>提供技术支持</p>
-    			<p class="add-group">社团纳新进行中 欢迎加群进一步了解</p>
-    		</div>
+        <div class="footer">
+			<div class="qr-code"></div>
+			<p class="support">由<a href="http://www.turingca.com/" class="turingca">图灵电脑协会</a>提供技术支持</p>
+			<p class="add-group">社团纳新进行中 欢迎加群进一步了解</p>
     	</div>
     </div>
     <script>
@@ -234,6 +248,7 @@
 
 	        			$('#starter-template').show();
 	        			$(this).parent().hide();
+	        			$('.footer').addClass('footer-show').removeClass('footer');
 
 	        			calculateHash(nv);
 	        			initializeRoomSelector();
