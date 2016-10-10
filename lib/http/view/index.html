@@ -249,8 +249,9 @@
 
 	        			$('#starter-template').show();
 	        			$(this).parent().hide();
-	        			$('.footer').addClass('footer-show').removeClass('footer');
-
+	        			setTimeout(function() {
+	        				$('.footer').addClass('footer-show').removeClass('footer');
+	        			}, 500);
 	        			calculateHash(nv);
 	        			initializeRoomSelector();
         				bindSendButton();
